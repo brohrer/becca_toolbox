@@ -14,6 +14,8 @@ From an interactive python interpreter window:
 From the command line:
 > python -m ffmpeg_tools -p <world package name> -m <world module name> -o <ouput_file_name
 """
+from __future__ import print_function
+
 import argparse
 import importlib
 import os
@@ -49,7 +51,7 @@ def make_movie(stills_directory, input_file_format='*.png',
     command = ' '.join(['ffmpeg -framerate', str(frames_per_second),
                         '-pattern_type glob -i', input_file_pattern,
                         '-y -c:v', codec, movie_filename])
-    print command
+    print(command)
     # shell=True is considered a bit of a security risk, but without it
     # this cammand won't parse properly
     sp.call(command, shell=True)
@@ -76,7 +78,7 @@ def break_movie(movie_filename, stills_directory, output_file_format='.jpg'):
     output_file_pattern = os.path.join(stills_directory, output_files)
 
     command = ' '.join(['ffmpeg -i', movie_filename, output_file_pattern])
-    print command
+    print(command)
     # shell=True is considered a bit of a security risk, but without it
     # this cammand won't parse properly
     sp.call(command, shell=True)
