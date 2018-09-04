@@ -4,7 +4,7 @@ Tools for working with still images and videos based on the ffmpeg library.
 To make use of these, you'll need to install ffmpeg and make sure that
 the ffmpeg executable is in your PATH.
 https://ffmpeg.org/
- 
+
 Usage
 -----
 From an interactive python interpreter window:
@@ -12,7 +12,7 @@ From an interactive python interpreter window:
 >>> ft.produce("<world package name>", "<world module name>")
 
 From the command line:
-> python -m ffmpeg_tools -p <world package name> -m <world module name> -o <ouput_file_name
+> python -m ffmpeg_tools -p <world package name> -m <world module name> -o <ouput_file_name  # noqa: E501
 """
 from __future__ import print_function
 
@@ -118,12 +118,18 @@ def parse(args):
     """
     parser = argparse.ArgumentParser(
         description='Make and break movies for Becca.')
-    parser.add_argument('-p', '--package',
-                        help="The name of the world package to make a movie for.")
-    parser.add_argument('-m', '--module',
-                        help="The name of the world module")
-    parser.add_argument('-o', '--name',
-                        help="The name of the finished movie file.")
+    parser.add_argument(
+        '-p', '--package',
+        help="The name of the world package to make a movie for.",
+    )
+    parser.add_argument(
+        '-m', '--module',
+        help="The name of the world module",
+    )
+    parser.add_argument(
+        '-o', '--name',
+        help="The name of the finished movie file.",
+    )
     args = parser.parse_args()
 
     produce(args.package, args.module, args.name)

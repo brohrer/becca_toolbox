@@ -4,6 +4,7 @@ Some convenient functions for pulling out informtion about Becca features.
 
 import numpy as np
 
+
 def get_feature_set(brain):
     """
     Get a representation of all the features learned by a Brain.
@@ -57,7 +58,7 @@ def get_feature_set(brain):
     for i_level, level in enumerate(brain.levels):
         # and then through the output features in each level.
         level_features = []
-        for i_feature in xrange(level.num_sequences):
+        for i_feature in range(level.num_sequences):
             # Expand the features one at a time. Represent each using
             # a one-hot feature array.
             feature_to_expand = np.zeros(level.max_num_inputs)
